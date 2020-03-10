@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class SortSearch {
 
-	public static ArrayList<Comparable> sequentialSearch(ArrayList<Comparable> arr, Comparable item) {
+	public static ArrayList<Comparable> sequentialSearch(ArrayList<Comparable> pre, Comparable item) {
+		ArrayList<Comparable> arr = new ArrayList<Comparable>(pre);
 		ArrayList<Comparable> list = new ArrayList<Comparable>();
 		
 		for(int i = arr.size()-1; i >= 0; i--) {
@@ -16,7 +17,8 @@ public class SortSearch {
 		return list;
 	}
 	
-	public static ArrayList<Comparable> binarySearch(ArrayList<Comparable> list, Comparable item) throws NullPointerException{
+	public static ArrayList<Comparable> binarySearch(ArrayList<Comparable> arr, Comparable item){
+		ArrayList<Comparable> list = new ArrayList<Comparable>(arr);
 		ArrayList<Comparable> results = new ArrayList<Comparable>();
 		int first = 0;
 		int last = list.size()-1;
@@ -31,11 +33,16 @@ public class SortSearch {
 				last = n - 1;
 			}else {
 				//equals
-				
+				results.add(list.get(n));
+				list.remove(n);
+				first = 0;
+				last = list.size()-1;
+				n = list.size()/2;
+				continue;
 			}
 			n = (first + last)/2;
 		}
-		throw new NullPointerException("Not found");
+		return results;
 	}
 	
 	
