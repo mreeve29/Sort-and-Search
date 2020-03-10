@@ -29,5 +29,9 @@ public class Student implements Comparable<Student>{
 	public int compareTo(Student o) {
 		return getName().toLowerCase().compareTo(o.getName().toLowerCase());
 	}
+	
+	public String toString() {
+		return getName() + " - " + getGpa() + " GPA";
+	}
 
 }
