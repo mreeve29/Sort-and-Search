@@ -14,7 +14,7 @@ public class SearchDialog extends GBDialog{
 	
 	private JTextField searchField = addTextField("",3,1,3,1);
 	
-	private JButton sortButton = addButton("Sort",4,1,3,1);
+	private JButton sortButton = addButton("Search",4,1,3,1);
 	
 	
 	private Database db;
@@ -23,10 +23,10 @@ public class SearchDialog extends GBDialog{
 		if(button == sortButton) {
 			if(studentButton.isSelected()) {
 				if(sequentialSearchButton.isSelected()) {
-					messageBox(SortSearch.sequentialSearch(db.getStudents(), new Student(search,0)).toString());
+					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getStudents(), new Student(search,0)),0);
 					return;
 				}else {
-					messageBox(SortSearch.binarySearch(SortSearch.selectionSort(db.getStudents()), new Student(search,0)).toString());
+					new OutputTableDialog(null, SortSearch.binarySearch(SortSearch.selectionSort(db.getStudents()), new Student(search,0)),0);
 					return;
 				}
 			}else if(employeeButton.isSelected()) {
@@ -38,19 +38,25 @@ public class SearchDialog extends GBDialog{
 					return;
 				}
 				if(sequentialSearchButton.isSelected()) {
-					messageBox(SortSearch.sequentialSearch(db.getEmployees(), new Employee("", salary)).toString());
+					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getEmployees(), new Employee("", salary)),1);
 					return;
 				}else {
 					new OutputTableDialog(null,SortSearch.binarySearch(SortSearch.selectionSort(db.getEmployees()),new Employee("", salary)),1);
-					//messageBox(SortSearch.binarySearch(SortSearch.selectionSort(db.getEmployees()), new Employee("", salary)).toString());
 					return;
 				}
 			}else if(widgetButton.isSelected()) {
+				int sold;
+				try {
+					sold = Integer.parseInt(search);
+				}catch(Exception e) {
+					messageBox("Invalid number sold value, must be integer");
+					return;
+				}
 				if(sequentialSearchButton.isSelected()) {
-					messageBox(SortSearch.insertionSort(db.getWidgets()).toString());
+					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getWidgets(), new Widget(0,sold)), 2);
 					return;
 				}else {
-					messageBox(SortSearch.selectionSort(db.getWidgets()).toString());
+					new OutputTableDialog(null,SortSearch.binarySearch(SortSearch.selectionSort(db.getWidgets()),new Widget(0,sold)),2);
 					return;
 				}
 			}
