@@ -21,12 +21,7 @@ public class SortSearchGUI extends GBFrame{
 	
 	
 	public SortSearchGUI() {
-		
 		db = new Database();
-		
-		db.addEmployee(new Employee("Bill",30));
-		db.addEmployee(new Employee("Rohin",0));
-		db.addEmployee(new Employee("Collin",69));
 		
 		setSize(400,400);
 		setTitle("Sort and Search");
