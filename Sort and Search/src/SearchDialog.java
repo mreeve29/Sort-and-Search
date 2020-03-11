@@ -23,10 +23,20 @@ public class SearchDialog extends GBDialog{
 		if(button == sortButton) {
 			if(studentButton.isSelected()) {
 				if(sequentialSearchButton.isSelected()) {
-					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getStudents(), new Student(search,0)),0);
+					ArrayList<Comparable> arr = SortSearch.sequentialSearch(db.getStudents(), new Student(search, 0));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null,arr,0);
 					return;
 				}else {
-					new OutputTableDialog(null, SortSearch.binarySearch(SortSearch.selectionSort(db.getStudents()), new Student(search,0)),0);
+					ArrayList<Comparable> arr = SortSearch.binarySearch(SortSearch.selectionSort(db.getStudents()), new Student(search,0));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null,arr,0);
 					return;
 				}
 			}else if(employeeButton.isSelected()) {
@@ -38,10 +48,20 @@ public class SearchDialog extends GBDialog{
 					return;
 				}
 				if(sequentialSearchButton.isSelected()) {
-					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getEmployees(), new Employee("", salary)),1);
+					ArrayList<Comparable> arr = SortSearch.sequentialSearch(db.getEmployees(), new Employee("", salary));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null,arr,1);
 					return;
 				}else {
-					new OutputTableDialog(null,SortSearch.binarySearch(SortSearch.selectionSort(db.getEmployees()),new Employee("", salary)),1);
+					ArrayList<Comparable> arr = SortSearch.binarySearch(SortSearch.selectionSort(db.getEmployees()),new Employee("", salary));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null,arr,1);
 					return;
 				}
 			}else if(widgetButton.isSelected()) {
@@ -53,10 +73,20 @@ public class SearchDialog extends GBDialog{
 					return;
 				}
 				if(sequentialSearchButton.isSelected()) {
-					new OutputTableDialog(null, SortSearch.sequentialSearch(db.getWidgets(), new Widget(0,sold)), 2);
+					ArrayList<Comparable> arr = SortSearch.sequentialSearch(db.getWidgets(), new Widget("", sold));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null, arr, 2);
 					return;
 				}else {
-					new OutputTableDialog(null,SortSearch.binarySearch(SortSearch.selectionSort(db.getWidgets()),new Widget(0,sold)),2);
+					ArrayList<Comparable> arr = SortSearch.binarySearch(SortSearch.selectionSort(db.getWidgets()),new Widget("", sold));
+					if(arr.size() == 0) {
+						messageBox("No results found for \"" + search + "\"");
+						return;
+					}
+					new OutputTableDialog(null,arr,2);
 					return;
 				}
 			}

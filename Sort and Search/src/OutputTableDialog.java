@@ -98,7 +98,7 @@ public class OutputTableDialog extends GBDialog {
 			dataRow[1] = String.format("%.2f", ((Employee) (obj)).getSalary());
 		}
 		if (obj.getClass().equals(Widget.class)) {
-			dataRow[0] = String.format("%d", ((Widget) (obj)).getProductNumber());
+			dataRow[0] = ((Widget) (obj)).getProductNumber();
 			dataRow[1] = String.format("%d", ((Widget) (obj)).getNumberSold());
 		}
 

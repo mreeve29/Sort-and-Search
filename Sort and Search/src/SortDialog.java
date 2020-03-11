@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javax.swing.*;
 import BreezySwing.*;
 
@@ -18,26 +20,56 @@ public class SortDialog extends GBDialog{
 		if(button == sortButton) {
 			if(studentButton.isSelected()) {
 				if(insertionSortButton.isSelected()) {
-					messageBox(SortSearch.insertionSort(db.getStudents()).toString());
+					ArrayList<Comparable> arr = SortSearch.insertionSort(db.getStudents());
+					if(arr.size() == 0) {
+						messageBox("There are no students entered");
+						return;
+					}
+					new OutputTableDialog(null,arr,0);
 					return;
 				}else {
-					messageBox(SortSearch.selectionSort(db.getStudents()).toString());
+					ArrayList<Comparable> arr = SortSearch.selectionSort(db.getStudents());
+					if(arr.size() == 0) {
+						messageBox("There are no students entered");
+						return;
+					}
+					new OutputTableDialog(null,arr,0);
 					return;
 				}
 			}else if(employeeButton.isSelected()) {
 				if(insertionSortButton.isSelected()) {
-					messageBox(SortSearch.insertionSort(db.getEmployees()).toString());
+					ArrayList<Comparable> arr = SortSearch.insertionSort(db.getEmployees());
+					if(arr.size() == 0) {
+						messageBox("There are no employees entered");
+						return;
+					}
+					new OutputTableDialog(null,arr, 1);
 					return;
 				}else {
-					messageBox(SortSearch.selectionSort(db.getEmployees()).toString());
+					ArrayList<Comparable> arr = SortSearch.selectionSort(db.getEmployees());
+					if(arr.size() == 0) {
+						messageBox("There are no employees entered");
+						return;
+					}
+					new OutputTableDialog(null,arr, 1);
 					return;
 				}
 			}else if(widgetButton.isSelected()) {
 				if(insertionSortButton.isSelected()) {
-					messageBox(SortSearch.insertionSort(db.getWidgets()).toString());
+					ArrayList<Comparable> arr = SortSearch.insertionSort(db.getWidgets());
+					if(arr.size() == 0) {
+						messageBox("There are no widgets entered");
+						return;
+					}
+					new OutputTableDialog(null,arr, 2);
 					return;
 				}else {
-					messageBox(SortSearch.selectionSort(db.getWidgets()).toString());
+					ArrayList<Comparable> arr = SortSearch.selectionSort(db.getWidgets());
+					if(arr.size() == 0) {
+						messageBox("There are no widgets entered");
+						return;
+					}
+					new OutputTableDialog(null,arr, 2);
 					return;
 				}
 			}

@@ -1,19 +1,19 @@
 
 public class Widget implements Comparable<Widget>{
 
-	private int productNumber;
+	private String productNumber;
 	private int numberSold;
 	
-	public Widget(int productNumber, int numberSold) {
+	public Widget(String productNumber, int numberSold) {
 		this.productNumber = productNumber;
 		this.numberSold = numberSold;
 	}
 
-	public int getProductNumber() {
+	public String getProductNumber() {
 		return productNumber;
 	}
 
-	public void setProductNumber(int productNumber) {
+	public void setProductNumber(String productNumber) {
 		this.productNumber = productNumber;
 	}
 

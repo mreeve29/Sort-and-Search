@@ -84,6 +84,7 @@ public class AddDialog extends GBDialog {
 				
 				if(name.length() != 3) {
 					messageBox("Invalid code, must be 3 digits");
+					return;
 				}
 				
 				int code = 0;
@@ -95,7 +96,12 @@ public class AddDialog extends GBDialog {
 					return;
 				}
 				
-				db.addWidget(new Widget(code,sold));
+				if(code < 0 ) {
+					messageBox("Cannot be negative");
+					return;
+				}
+				
+				db.addWidget(new Widget(name,sold));
 			}
 			
 			setDlgCloseIndicator("ADDED");
